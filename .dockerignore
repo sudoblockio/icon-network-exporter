@@ -1,0 +1,9 @@
+env/
+docs/
+.bak/
+.pytest_cache/
+img/
+build/
+dist/
+.github/
+icon_network_exporter.egg-info/
