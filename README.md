@@ -22,14 +22,21 @@ cd icon-prometheus-exporter
 python setup.py install
 ```
 
+### Docker Compose 
+
+Easiest way to run. Modify per networks you are interested in. 
+```
+docker-compose up -d
+```
+
 ### Docker
 
 Pull container
 ```bash
-docker run -p 6100:6100 -it insightinfrastructure/icon-network-exporter:v0.2.0
+docker run -p 6100:6100 -it geometrylabs/icon-network-exporter:v0.3.0
 ```
 
-Build from source
+Build from source:
 ```bash
 docker build -t icon-network-exporter .
 docker run -it icon-network-exporter 
@@ -37,7 +44,7 @@ docker run -it icon-network-exporter
 
 To verify
 ```bash
-curl localhost:6100
+curl localhost:6100/metrics
 ```
 
 ## Credit
