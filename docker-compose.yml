@@ -1,14 +1,18 @@
 version: "3.8"
 services:
   mainnet:
-    build: .
+    build:
+      context: .
+      target: prod
     ports:
       - "6100:6100"
     environment:
       network_name: mainnet
       exporter_port: 6100
   zicon:
-    build: .
+    build:
+      context: .
+      target: prod
     ports:
       - "6101:6101"
     environment:
@@ -16,14 +20,18 @@ services:
       exporter_port: 6101
   #      end_ranking: 0x22 # 34
   bicon:
-    build: .
+    build:
+      context: .
+      target: prod
     ports:
       - "6102:6102"
     environment:
       network_name: bicon
       exporter_port: 6102
   testnet:
-    build: .
+    build:
+      context: .
+      target: prod
     ports:
       - "6103:6103"
     environment:
