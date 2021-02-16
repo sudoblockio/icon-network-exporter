@@ -7,3 +7,5 @@ build/
 dist/
 .github/
 icon_network_exporter.egg-info/
+
+example-dashboard.png

@@ -16,6 +16,16 @@ To install the icon-prometheus-exporter package.
 - **icon_total_active_main_preps** - Total number of active nodes above rank 22
 - **icon_total_active_sub_preps** - Total number of inactive validators - (nodes off / in blocksync)
 
+### Environment Variables
+
+> Case insensitive
+
+| Name | Default | Description | 
+| :--- | :--- | :--- | 
+| network_name |  | mainnet, zicon, bicon, testnet | 
+| exporter_port | 
+
+
 ### Manually
 ```bash
 cd icon-prometheus-exporter
@@ -46,6 +56,12 @@ To verify
 ```bash
 curl localhost:6100/metrics
 ```
+
+### Example Dashboard
+
+Metrics from this exporter are driving dashboards like this. 
+
+![](./example-dashboard.png)
 
 ## Credit
 
