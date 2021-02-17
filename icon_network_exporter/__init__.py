@@ -208,7 +208,8 @@ class Exporter:
                     if j['apiEndpoint'] == self.resp_non_null[0][i]['apiEndpoint']:
                         previous_block = j['block_height']
                 if previous_block:
-                    num_blocks = current_block - previous_block
+                    # Forgot grade school math -> Block time should be ~2 secs so adding 1 below
+                    num_blocks = current_block - previous_block + 1
                     if num_blocks > 0:
                         # Adding half a block to account for mid block sample
                         block_time = (self.config.poll_interval * self.config.num_data_points_retentation) / (
