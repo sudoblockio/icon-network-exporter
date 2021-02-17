@@ -42,6 +42,18 @@ class Exporter:
         self.gauge_prep_node_state = Gauge('icon_prep_node_state', 'Number to indicate node state - ie Vote=1, Watch=2',
                                            ['name', 'network_name'])
 
+        self.gauge_prep_node_version_loopchain_minor = Gauge('icon_prep_node_version_loopchain_minor', 'Version of iconloop/prep-node',
+                                                             ['name', 'network_name'])
+
+        self.gauge_prep_node_unconfirmed_tx = Gauge('icon_prep_node_unconfirmed_tx', 'Version of iconloop/prep-node',
+                                             ['name', 'network_name'])
+
+        self.gauge_prep_node_peer_count = Gauge('icon_prep_node_peer_count', 'Version of iconloop/prep-node',
+                                             ['name', 'network_name'])
+
+        self.gauge_prep_node_audience_count = Gauge('icon_prep_node_audience_count', 'Version of iconloop/prep-node',
+                                             ['name', 'network_name'])
+
         self.gauge_prep_node_rank = Gauge('icon_prep_node_rank', 'Rank of the node', ['name', 'network_name'])
 
         self.gauge_prep_node_block_time = Gauge('icon_prep_node_block_time', 'Time in seconds per block for a node',
@@ -133,6 +145,11 @@ class Exporter:
                 self.gauge_prep_node_block_height.labels(name, self.config.network_name.value).set(i['block_height'])
                 self.gauge_prep_node_latency.labels(name, self.config.network_name.value).set(i['latency'])
                 self.gauge_prep_node_state.labels(name, self.config.network_name.value).set(STATE_MAP[i['state']])
+                self.gauge_prep_node_version_loopchain_minor.labels(
+                    name, self.config.network_name.value).set(i['versions']['loopchain'].split('.')[2])
+                self.gauge_prep_node_unconfirmed_tx.labels(name, self.config.network_name.value).set(i['unconfirmed_tx'])
+                self.gauge_prep_node_audience_count.labels(name, self.config.network_name.value).set(i['audience_count'])
+                self.gauge_prep_node_peer_count.labels(name, self.config.network_name.value).set(i['peer_count'])
 
     def get_active_preps(self):
         active_main_preps = 0
