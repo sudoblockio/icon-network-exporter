@@ -1,13 +1,9 @@
 import requests
-import json
-from icon_network_exporter.config import Config
-import pytest
-
 
 
 def test_get_preps():
     payload = {
-        "jsonrpc": "2.0",
+            "jsonrpc": "2.0",
         "id": 1234,
         "method": "icx_call",
         "params": {
