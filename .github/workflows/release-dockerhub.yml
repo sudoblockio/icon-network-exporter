@@ -24,6 +24,7 @@ jobs:
       - name: Test from localhost
         id: test
         run: |
+          sudo apt-get install python3-setuptools
           pip3 install -r requirements_dev.txt
           python3 -m pytest tests
 
