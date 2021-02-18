@@ -1,0 +1,31 @@
+name: Push to Master CI
+
+# For all pushes to the main branch run the tests and push the image to the
+# GitHub registry under an edge tag so we can use it for the nightly
+# integration tests
+on:
+  push:
+    branches: main
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build the stack
+        run: docker-compose -f docker-compose.yml up -d
+
+      - name: Check running containers
+        run: docker-compose -f docker-compose.yml ps
+
+      - name: Check logs
+        run: docker-compose -f docker-compose.yml logs mainnet
+
+      - name: Test from localhost
+        id: test
+        run: |
+          sudo apt-get install python3-setuptools
+          pip3 install -r requirements_dev.txt
+          python3 -m pytest tests
