@@ -1,4 +1,4 @@
-name: PR CI
+name: PR Test CI
 
 # For all pushes to the main branch run the tests and push the image to the
 # GitHub registry under an edge tag so we can use it for the nightly
@@ -22,6 +22,9 @@ jobs:
 
       - name: Check logs
         run: docker-compose -f docker-compose.yml logs mainnet
+
+      - name: Test from docker
+        run: docker-compose -f docker-compose.yml exec mainnet pytest
 
       - name: Test from localhost
         id: test

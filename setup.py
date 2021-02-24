@@ -1,8 +1,8 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 url = ""
 version = "0.1.0"
-readme = open('README.md').read()
+readme = open("README.md").read()
 
 setup(
     name="icon-network-exporter",
@@ -11,20 +11,21 @@ setup(
     description="exporter agent for icon blockchain",
     long_description=readme,
     entry_points={
-        'console_scripts': [
-            'icon-network-exporter=icon_network_exporter:main',
+        "console_scripts": [
+            "icon-network-exporter=icon_network_exporter:main",
         ],
     },
     install_requires=[
-        'requests>=2,<3',
-        'prometheus_client',
-        'pydantic',
-        'aiohttp'
+        "requests>=2,<3",
+        "prometheus_client",
+        "pydantic",
+        "aiohttp",
+        "PyYAML",
     ],
     include_package_data=True,
     author="Rob Cannon",
     author_email="rob.cannon@insightdatascience.com",
     url=url,
     download_url="{}/tarball/{}".format(url, version),
-    license="MIT"
+    license="MIT",
 )

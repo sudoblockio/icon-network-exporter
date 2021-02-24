@@ -1,4 +1,4 @@
-name: Push to Master CI
+name: Push to Main Test CI
 
 # For all pushes to the main branch run the tests and push the image to the
 # GitHub registry under an edge tag so we can use it for the nightly

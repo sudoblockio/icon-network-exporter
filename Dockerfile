@@ -20,5 +20,3 @@ CMD ["icon-network-exporter"]
 FROM base as test
 COPY requirements_dev.txt .
 RUN pip3 install -r requirements_dev.txt
-RUN python3 -m pytest
-

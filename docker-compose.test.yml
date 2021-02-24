@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  mainnet:
+    build:
+      context: .
+      target: test
+    ports:
+      - "6100:6100"
+    environment:
+      network_name: mainnet
+      exporter_port: 6100
+      main_watch_list_file: tests/fixtures/main-watch-list.yaml
