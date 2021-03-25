@@ -22,7 +22,7 @@ jobs:
         run: docker-compose -f docker-compose.test.yml logs defaults
 
       - name: Run test suite
-        run: python -m pytest
+        run: pip install -r requirements_dev.txt && python -m pytest
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1

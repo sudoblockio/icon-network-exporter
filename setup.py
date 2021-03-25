@@ -21,6 +21,7 @@ setup(
         "pydantic",
         "aiohttp",
         "PyYAML",
+        "async-timeout",
     ],
     include_package_data=True,
     author="Rob Cannon",
