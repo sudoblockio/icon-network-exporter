@@ -18,7 +18,7 @@ jobs:
         run: docker-compose -f docker-compose.test.yml ps
 
       - name: Check logs
-        run: docker-compose -f docker-compose.test.yml logs mainnet
+        run: docker-compose -f docker-compose.test.yml logs defaults
 
       - name: Run test suite
         run: python -m pytest
