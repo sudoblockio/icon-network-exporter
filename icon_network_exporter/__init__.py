@@ -277,13 +277,21 @@ class Exporter:
         # if len(self.reference_list) > self.config.num_data_points_retentation:
         #     self.reference_list.pop()
 
-        total_tx = next(
-            item
-            for item in self.resp_non_null[0]
-            if item["apiEndpoint"] == self.reference_node_api_endpoint
-        )["total_tx"]
-        # Get total TX
-        self.gauge_total_tx.labels(self.config.network_name.value).set(total_tx)
+        # Creating error where the list is exhausted (Stop Iteration)
+        # total_tx = next(
+        #     item
+        #     for item in self.resp_non_null[0]
+        #     if item["apiEndpoint"] == self.reference_node_api_endpoint
+        # )["total_tx"]
+        # # Get total TX
+        if len(self.resp_non_null) == 5:
+            total_tx = max(
+                [
+                    int(self.resp_non_null[4][i]["total_tx"])
+                    for i in range(0, len(self.resp_non_null[4]))
+                ]
+            )
+            self.gauge_total_tx.labels(self.config.network_name.value).set(total_tx)
 
         term_change_block = requests.post(
             self.config.main_api_endpoint, json=get_iiss_info()
