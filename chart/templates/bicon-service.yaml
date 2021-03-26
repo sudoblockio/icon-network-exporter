@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-bicon
+  labels:
+    icon-network: "bicon"
+{{ include "labels" . | indent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.app.bicon_port }}
+      targetPort: {{ .Values.app.bicon_port }}
+      protocol: TCP
+      name: {{ .Values.service.name }}-bicon
+  selector:
+    icon-network: "bicon"
+{{ include "selectorLabels" . | indent 4 }}
