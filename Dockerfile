@@ -11,12 +11,11 @@ RUN pip install --upgrade pip && pip install -e /$PROJECT_DIR/
 ENV TINI_VERSION v0.19.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
-EXPOSE 6100
-
-FROM base as prod
-ENTRYPOINT ["/tini", "--"]
-CMD ["icon-network-exporter"]
 
 FROM base as test
 COPY requirements_dev.txt .
 RUN pip3 install -r requirements_dev.txt
+
+FROM base as prod
+ENTRYPOINT ["/tini", "--"]
+CMD ["icon-network-exporter"]

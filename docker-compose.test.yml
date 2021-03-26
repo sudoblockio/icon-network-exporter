@@ -1,12 +1,20 @@
 version: "3.4"
 services:
-  mainnet:
+  defaults:
     build:
       context: .
-      target: test
     ports:
       - "6100:6100"
     environment:
       network_name: mainnet
       exporter_port: 6100
+
+  watchlist:
+    build:
+      context: .
+    ports:
+      - "6101:6101"
+    environment:
+      network_name: mainnet
+      exporter_port: 6101
       main_watch_list_file: tests/fixtures/main-watch-list.yaml
