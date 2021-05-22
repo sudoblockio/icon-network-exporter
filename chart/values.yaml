@@ -22,3 +22,19 @@ resources:
   limit:
     cpu: 500m
     memory: 256Mi
+
+mainnet:
+  main_watch_list: []
+  sub_watch_list: []
+
+zicon:
+  main_watch_list: []
+  sub_watch_list: []
+
+bicon:
+  main_watch_list: []
+  sub_watch_list: []
+
+testnet:
+  main_watch_list: []
+  sub_watch_list: []
