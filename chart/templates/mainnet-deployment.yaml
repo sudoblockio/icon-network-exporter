@@ -45,6 +45,6 @@ spec:
             - name: exporter_port
               value: {{ .Values.app.mainnet_port | quote }}
             - name: main_watch_list
-              value: {{ .Values.bicon.main_watch_list | quote }}
+              value: {{ .Values.mainnet.main_watch_list | quote }}
             - name: sub_watch_list
-              value: {{ .Values.bicon.sub_watch_list | quote }}
+              value: {{ .Values.mainnet.sub_watch_list | quote }}
