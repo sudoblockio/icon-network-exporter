@@ -4,14 +4,14 @@ import requests
 
 
 def test_get_team_names():
-    r = requests.get('http://localhost:6100/metrics')
+    r = requests.get("http://localhost:6100/metrics")
     assert b"ICON Foundation" in r.content
     assert b"Spartan Node" in r.content
     assert r.status_code == 200
 
 
 def test_assert_metrcis():
-    r = requests.get('http://localhost:6100/metrics')
+    r = requests.get("http://localhost:6100/metrics")
     assert b"icon_prep_node_block_height" in r.content
     assert b"icon_prep_node_state" in r.content
     assert b"icon_prep_node_version_loopchain_minor" in r.content

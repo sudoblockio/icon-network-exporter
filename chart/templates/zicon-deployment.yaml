@@ -44,3 +44,7 @@ spec:
               value: "zicon"
             - name: exporter_port
               value: {{ .Values.app.zicon_port | quote }}
+            - name: main_watch_list
+              value: {{ .Values.zicon.main_watch_list | quote }}
+            - name: sub_watch_list
+              value: {{ .Values.zicon.sub_watch_list | quote }}

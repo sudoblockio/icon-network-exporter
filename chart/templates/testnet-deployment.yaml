@@ -44,3 +44,7 @@ spec:
               value: "testnet"
             - name: exporter_port
               value: {{ .Values.app.testnet_port | quote }}
+            - name: main_watch_list
+              value: {{ .Values.mainnet.main_watch_list | quote }}
+            - name: sub_watch_list
+              value: {{ .Values.mainnet.sub_watch_list | quote }}
