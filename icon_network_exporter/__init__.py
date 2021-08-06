@@ -3,6 +3,7 @@
 # to be scraped by prometheus
 
 import asyncio
+from datetime import datetime
 from signal import SIGINT, SIGTERM, signal
 from time import sleep, time
 from typing import List
@@ -160,7 +161,8 @@ class Exporter:
                 sleep(delay)
 
     def _run_updaters(self):
-        print(f"Iteration #{self.prep_list_request_counter}")
+        time_now = datetime.now().strftime("%H:%M:%S")
+        print(f"Iteration #{self.prep_list_request_counter} at {time_now}")
         self.get_prep_list()
         self.scrape_metrics()
         self.get_active_preps()
