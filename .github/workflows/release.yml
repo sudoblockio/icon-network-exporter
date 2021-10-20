@@ -47,3 +47,25 @@ jobs:
         run: |
           docker build --target prod -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+      - name: Checkout charts repo
+        uses: actions/checkout@v2
+        with:
+          repository: geometry-labs/icon-charts
+          ref: main
+          path: charts
+          token: ${{ secrets.ICON_CHARTS_PAT }}
+
+      - name: Update deployment values file and re-commit
+        uses: fjogeleit/yaml-update-action@master
+        with:
+          workDir: charts
+          repository: geometry-labs/icon-charts
+          valueFile: 'deployments/prod/network-exporter/values.yaml'
+          propertyPath: 'api.image.tag'
+          value: ${{ github.run_number }}
+          branch: main
+          createPR: 'false'
+          message: 'metrics dev deployment (mainnet) image versions to ${{ github.run_number }}'
+          token: ${{ secrets.ICON_CHARTS_PAT }}
+          updateFile: true

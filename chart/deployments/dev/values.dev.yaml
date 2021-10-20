@@ -1,4 +1,0 @@
-image:
-  repository: 868027517775.dkr.ecr.us-west-2.amazonaws.com/icon-network-exporter
-  tag: '1'
-  pullPolicy: IfNotPresent
